@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#080611">
   <meta name="description" content="SPARROW – Dein Discord-Bot für Community, Tickets, Sicherheit und mehr.">
-  <title>SPARROW — Discord, elevated.</title>
+  <title>SPARROW — Official Discord & Store</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
@@ -14,21 +14,31 @@
   <div class="noise" aria-hidden="true"></div>
   <canvas id="stars" aria-hidden="true"></canvas>
   <header class="header">
-    <a class="brand" href="#start" aria-label="Sparrow Startseite"><span class="brand-mark">S</span><span>SPARROW<span class="brand-dot">.</span></span></a>
+    <a class="brand" href="#start" aria-label="Sparrow Startseite"><img class="brand-image" src="sparrow-logo.gif" alt="" width="42" height="42"><span>SPARROW<span class="brand-dot">.</span></span></a>
     <nav class="nav" aria-label="Hauptnavigation">
-      <a href="#features">Features</a><a href="#system">System</a><a href="#faq">FAQ</a>
+      <a href="#products">Produkte</a><a href="#payment">Zahlung</a><a href="#features">Features</a><a href="#faq">FAQ</a>
     </nav>
-    <a class="nav-cta" href="#join">Jetzt starten <span aria-hidden="true">↗</span></a>
+    <a class="nav-cta discord-action" href="#join">Discord beitreten <span aria-hidden="true">↗</span></a>
   </header>
   <main>
     <section class="hero" id="start">
       <div class="hero-glow" aria-hidden="true"></div>
-      <div class="eyebrow"><span class="pulse-dot"></span> YOUR SERVER. NEXT LEVEL.</div>
-      <h1>ONE BOT.<br><em>ENDLESS</em><br>POSSIBILITIES<span class="period">.</span></h1>
-      <p class="hero-copy">Ein Bot. Dein gesamter Server. Moderation, Tickets, Verifizierung, Community und mehr — vereint in einem System.</p>
-      <div class="hero-actions"><a class="button primary" href="#join">SPARROW ENTDECKEN <span>↗</span></a><a class="button secondary" href="#features">FEATURES ANSEHEN <span>↓</span></a></div>
-      <div class="hero-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="glass-logo">S</div><div class="tiny-star a">✦</div><div class="tiny-star b">✦</div></div>
+      <div class="eyebrow"><span class="pulse-dot"></span> SPARROW / OFFICIAL COMMUNITY</div>
+      <h1>ENTER THE<br><em>SPARROW</em><br>UNIVERSE<span class="period">.</span></h1>
+      <p class="hero-copy">Dein Zugang zur SPARROW Community. Join unserem Discord, entdecke unsere Produktkategorien und erfahre alles über neue Releases.</p>
+      <div class="hero-actions"><a class="button primary discord-action" href="#join">DISCORD BEITRETEN <span>↗</span></a><a class="button secondary" href="#products">PRODUKTE ENTDECKEN <span>↓</span></a></div>
+      <div class="hero-art hero-logo-wrap" aria-hidden="true"><div class="logo-halo"></div><img class="hero-logo" src="sparrow-logo.gif" alt="" width="400" height="400"><span class="logo-caption">S P A R R O W &nbsp; / &nbsp; O F F I C I A L</span></div>
       <div class="hero-foot"><span>ENGINEERED FOR COMMUNITIES</span><span>SCROLL TO EXPLORE ↓</span></div>
+    </section>
+
+    <section class="section products" id="products">
+      <div class="section-heading"><div><p class="kicker">01 / SPARROW STORE</p><h2>Unsere <em>Produkte.</em></h2></div><p>Entdecke unsere Kategorien und kommende Angebote. Konkrete Produkte, Leistungen und Preise werden noch eingerichtet.</p></div>
+      <div class="category-bar" id="category-bar" aria-label="Produktkategorien"></div>
+      <div class="product-grid" id="product-grid"></div>
+      <p class="store-notice" id="store-notice">Noch keine Produkte eingerichtet. Füge deine Produkte in <code>script.js</code> hinzu.</p>
+    </section>
+    <section class="section payments" id="payment">
+      <div class="payment-panel"><div><p class="kicker">02 / SECURE CHECKOUT</p><h2>Einfach <em>bezahlen.</em></h2><p class="payment-copy">Bezahle über einen sicheren Checkout des jeweiligen Zahlungsanbieters. Auf dieser Website werden keine Kartendaten gesammelt oder gespeichert.</p><div class="payment-methods"><span>PayPal*</span><span>Kredit-/Debitkarte*</span><span>Apple Pay*</span><span>Google Pay*</span></div><small>* Geplante Zahlungsmethoden. Noch kein Checkout aktiv. Die tatsächlich akzeptierten Methoden hängen später vom Zahlungsanbieter, Land und Gerät ab.</small></div><div class="payment-visual" aria-hidden="true"><span class="pay-lock">✦</span><strong>SPARROW</strong><span>SECURE CHECKOUT ↗</span><div class="pay-bars"><i></i><i></i><i></i><i></i></div></div></div>
     </section>
     <section class="marquee" aria-label="Sparrow-Funktionen"><div class="marquee-inner">MODERATION <span>✦</span> TICKETS <span>✦</span> VERIFICATION <span>✦</span> COMMUNITY <span>✦</span> AUTOMATION <span>✦</span> MODERATION <span>✦</span> TICKETS <span>✦</span> VERIFICATION <span>✦</span></div></section>
     <section class="section features" id="features"><div class="section-heading"><div><p class="kicker">01 / FEATURES</p><h2>Alles, was dein<br>Server <em>braucht.</em></h2></div><p>Dein Community-Hub, neu gedacht. Die wichtigsten Werkzeuge an einem Ort.</p></div>
@@ -41,9 +51,9 @@
       </div>
     </section>
     <section class="section system" id="system"><div class="system-card"><div class="system-content"><p class="kicker">02 / THE SPARROW SYSTEM</p><h2>CONTROL.<br><em>WITHOUT</em><br>CHAOS.</h2><p>Von Support bis Sicherheit: SPARROW bündelt die Werkzeuge für deinen Discord-Server in einem einheitlichen Erlebnis.</p><a class="text-link" href="#join">DEINE COMMUNITY AUFWERTEN <span>↗</span></a></div><div class="system-visual" aria-hidden="true"><div class="dashboard"><div class="dash-head"><span>◈ SPARROW / OVERVIEW</span><span class="online">● SYSTEM READY</span></div><div class="dash-body"><div class="dash-tile"><small>SUPPORT</small><strong>Tickets</strong><span>─────────</span></div><div class="dash-tile"><small>COMMUNITY</small><strong>Verify</strong><span>─────────</span></div><div class="dash-tile"><small>SAFETY</small><strong>Logs</strong><span>─────────</span></div><div class="dash-tile"><small>TOOLS</small><strong>Moderation</strong><span>─────────</span></div></div><div class="dash-bottom"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div></div></section>
-    <section class="section faq" id="faq"><p class="kicker">03 / GOOD TO KNOW</p><h2>Häufige <em>Fragen.</em></h2><div class="faq-list"><details><summary>Was ist SPARROW? <span>+</span></summary><p>SPARROW ist ein Discord-Bot-Projekt, das mehrere Community- und Moderationsfunktionen miteinander verbindet.</p></details><details><summary>Welche Funktionen gibt es? <span>+</span></summary><p>Geplant bzw. im Projekt vorgesehen sind unter anderem Tickets, Verifizierung, Willkommensnachrichten, Vouches, Moderation und Logs. Welche Funktionen aktuell live sind, hängt von deiner Bot-Version ab.</p></details><details><summary>Wie kann ich SPARROW nutzen? <span>+</span></summary><p>Sobald die Einladungs- oder Discord-Server-Adresse hinterlegt wurde, kannst du über den Button unten starten.</p></details></div></section>
-    <section class="join" id="join"><p class="kicker">THE NEXT CHAPTER STARTS HERE</p><h2>READY TO<br><em>TAKE OFF?</em></h2><p>Bring deinen Discord-Server auf das nächste Level.</p><a id="discord-link" class="button primary join-button" href="#join">DISCORD-LINK HINTERLEGEN <span>↗</span></a><small id="link-hint">Der Server- oder Bot-Einladungslink muss noch in der Konfiguration ergänzt werden.</small></section>
+    <section class="section faq" id="faq"><p class="kicker">03 / GOOD TO KNOW</p><h2>Häufige <em>Fragen.</em></h2><div class="faq-list"><details><summary>Was ist SPARROW? <span>+</span></summary><p>SPARROW ist ein Discord-Bot-Projekt, das mehrere Community- und Moderationsfunktionen miteinander verbindet.</p></details><details><summary>Welche Funktionen gibt es? <span>+</span></summary><p>Geplant bzw. im Projekt vorgesehen sind unter anderem Tickets, Verifizierung, Willkommensnachrichten, Vouches, Moderation und Logs. Welche Funktionen aktuell live sind, hängt von deiner Bot-Version ab.</p></details><details><summary>Wie kann ich SPARROW nutzen? <span>+</span></summary><p>Klicke auf „Discord beitreten“. Discord öffnet den Einladungslink, wo du den Beitritt selbst bestätigst.</p></details></div></section>
+    <section class="join" id="join"><p class="kicker">THE NEXT CHAPTER STARTS HERE</p><h2>READY TO<br><em>TAKE OFF?</em></h2><p>Bring deinen Discord-Server auf das nächste Level.</p><a id="discord-link" class="button primary join-button" href="#join">DISCORD BEITRETEN <span>↗</span></a><small id="link-hint">Der Button öffnet unseren Discord-Einladungslink. Deinen Beitritt bestätigst du anschließend in Discord.</small></section>
   </main>
-  <footer><a class="brand" href="#start"><span class="brand-mark">S</span><span>SPARROW<span class="brand-dot">.</span></span></a><span>BUILT FOR THE COMMUNITY.</span><span>© <span id="year">2026</span> SPARROW</span></footer>
+  <footer><a class="brand" href="#start"><img class="brand-image" src="sparrow-logo.gif" alt="" width="42" height="42"><span>SPARROW<span class="brand-dot">.</span></span></a><span>BUILT FOR THE COMMUNITY.</span><span>© <span id="year">2026</span> SPARROW · Independent Discord community</span></footer>
 </body>
 </html>

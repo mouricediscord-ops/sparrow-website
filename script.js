@@ -1,21 +1,59 @@
-/* SPARROW Konfiguration: Füge hier deinen eigenen Einladungslink ein. */
+/* =======================================================================
+   SPARROW V3 – KONFIGURATION
+   discordInviteUrl = Dein Server-Einladungslink (https://discord.gg/...)
+   Produkte: Beispielprodukte ersetzen oder löschen. Kein Verkauf vor Einrichtung.
+   checkoutUrl = vollständiger, selbst eingerichteter Stripe-Payment-Link,
+                 PayPal-Zahlungslink oder ein anderer vertrauenswürdiger Checkout.
+   WICHTIG: Niemals API-Keys oder Passwörter in diese Datei schreiben.
+   ======================================================================= */
 const SPARROW_CONFIG = {
-  discordInviteUrl: '', // Beispiel: 'https://discord.gg/DEIN-CODE'
-  botInviteUrl: ''      // Optional: 'https://discord.com/oauth2/authorize?...'
+  discordInviteUrl: 'https://discord.gg/QxR2uwTGT',
+  products: [
+    { name: 'Community-Pakete', category: 'Pakete', description: 'Beispiel-Kategorie. Details zu künftigen Paketen werden hier veröffentlicht.', price: 'In Planung', checkoutUrl: '' },
+    { name: 'Bot-Konfiguration', category: 'Services', description: 'Beispiel-Kategorie für mögliche Dienstleistungen. Leistungen noch nicht festgelegt.', price: 'Auf Anfrage', checkoutUrl: '' },
+    { name: 'Digitale Extras', category: 'Extras', description: 'Platzhalter für zukünftige digitale Produkte. Noch kein Verkaufsangebot.', price: 'In Planung', checkoutUrl: '' }
+  ]
 };
 
-const link = document.getElementById('discord-link');
+const isDiscordUrl = url => { try { const u = new URL(url); return u.protocol === 'https:' && ['discord.gg','discord.com','www.discord.com','discordapp.com'].includes(u.hostname); } catch { return false; } };
+const isCheckoutUrl = url => { try {const u = new URL(url);return u.protocol === 'https:' && ['buy.stripe.com','checkout.stripe.com','paypal.me','www.paypal.com','paypal.com'].includes(u.hostname);} catch {return false;} };
 const hint = document.getElementById('link-hint');
-const invite = SPARROW_CONFIG.discordInviteUrl || SPARROW_CONFIG.botInviteUrl;
-if (invite && /^https:\/\/(discord\.gg|discord\.com|discordapp\.com)\//i.test(invite)) {
-  link.href = invite;
-  link.target = '_blank';
-  link.rel = 'noopener noreferrer';
-  link.firstChild.textContent = 'JETZT BEITRETEN ';
-  hint.textContent = 'Du wirst zu Discord weitergeleitet.';
-} else {
-  link.addEventListener('click', (event) => { event.preventDefault(); hint.textContent = 'Trage deinen Discord-Link oben in der Datei script.js unter SPARROW_CONFIG ein.'; });
+const invite = SPARROW_CONFIG.discordInviteUrl;
+document.querySelectorAll('.discord-action, #discord-link').forEach(link => {
+  if (isDiscordUrl(invite)) { link.href = invite;link.target = '_blank';link.rel = 'noopener noreferrer'; }
+  else { link.href = '#join'; link.addEventListener('click', () => {if(hint)hint.textContent='Discord-Link fehlt noch. Öffne script.js und setze discordInviteUrl.'; }); }
+});
+if (isDiscordUrl(invite) && hint) hint.textContent = 'Du wirst über den offiziellen Discord-Einladungslink weitergeleitet. Der Beitritt wird in Discord bestätigt.';
+
+const grid = document.getElementById('product-grid');
+const categories = document.getElementById('category-bar');
+const notice = document.getElementById('store-notice');
+const products = SPARROW_CONFIG.products;
+const availableCategories = ['Alle', ...new Set(products.map(item=>item.category))];
+let selectedCategory = 'Alle';
+function drawProducts(){
+  categories.replaceChildren(); grid.replaceChildren();
+  for(const category of availableCategories){
+    const btn=document.createElement('button'); btn.type='button'; btn.className='category-button';btn.textContent=category;
+    btn.setAttribute('aria-pressed', String(category===selectedCategory));
+    btn.addEventListener('click',()=>{selectedCategory=category;drawProducts();});categories.append(btn);
+  }
+  const visible=products.filter(item=>selectedCategory==='Alle'||item.category===selectedCategory);
+  notice.textContent=products.length===0?'Noch keine Produkte verfügbar.':'Vorschau-Kategorien: Noch keine Produkte oder Zahlungslinks freigeschaltet. Kaufbuttons bleiben bis zur Einrichtung deaktiviert.';
+  for(const item of visible){
+    const article=document.createElement('article');article.className='product-card';
+    const tag=document.createElement('span');tag.className='product-tag';tag.textContent=item.category;
+    const title=document.createElement('h3');title.textContent=item.name;
+    const desc=document.createElement('p');desc.textContent=item.description;
+    const bottom=document.createElement('div');bottom.className='product-bottom';
+    const price=document.createElement('span');price.className='product-price';price.textContent=item.price;
+    const action=document.createElement('a');action.className='buy-button';action.textContent=isCheckoutUrl(item.checkoutUrl)?'Bezahlen ↗':'Bald verfügbar';
+    if(isCheckoutUrl(item.checkoutUrl)){action.href=item.checkoutUrl;action.target='_blank';action.rel='noopener noreferrer';}
+    else {action.removeAttribute('href');action.setAttribute('aria-disabled','true');action.style.opacity='.55';action.style.cursor='not-allowed';}
+    bottom.append(price,action);article.append(tag,title,desc,bottom);grid.append(article);
+  }
 }
+drawProducts();
 document.getElementById('year').textContent = new Date().getFullYear();
 const canvas = document.querySelector('#stars');
 const ctx = canvas.getContext('2d');
